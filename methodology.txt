@@ -1,0 +1,171 @@
+Network Scanning
+
+   ☐  nmap -sn 10.11.1.*
+   ☐  nmap -sL 10.11.1.*
+   ☐  nbtscan -r 10.11.1.0/24
+   ☐  smbtree
+   ☐  nmap -p $INTERESTINGPORT 10.11.1.1-50 --open #Scan just these ports across this range, are they open.
+   ☐  nbtscan 10.10.10.10-200 
+   ☐  unicornscan 10.10.10.0/24:1-1000 #ports 1-1000 across whole /24 subnet
+
+Individual Host Scanning
+
+   ☐  nmap  --top-ports 20 --open -iL iplist.txt
+   ☐  nmap -sS -A -sV -O -p- ipaddress
+   ☐  nmap -sU ipaddress
+   ☐  nmap -sV -sC -oA output-filename 10.10.10.10
+   ☐  nmap -p $portno --script vuln 10.10.10.10  # Scan specific port and run NSE vuln checks.
+   ☐  unicornscan 10.10.10.10:a #all ports unicorn scan
+
+Service Scanning
+
+    WebApp
+      ☐   Nikto
+      ☐   dirb
+      ☐   dirbuster -r  #non recursive to start. Then restart on interesting directories. Use -X to specify extensions for certain apps e.g. .php .asp.      
+      ☐   gobuster
+      ☐   wpscan
+      ☐   dotdotpwn
+      ☐   view source # version numbers comments functions 
+      ☐   davtest\cadevar
+      ☐   droopscan
+      ☐   joomscan
+      ☐   LFI\RFI Test
+      ☐   Default Credentials
+      ☐   Application version No
+      ☐   Robots.txt
+      ☐   SQL injection
+      ☐   SSL check NSE
+
+      
+    Linux\Windows
+      ☐   snmpwalk -c public -v1 ipaddress 1
+      ☐   smbclient -L //ipaddress
+      ☐   showmount -e ipaddress port
+      ☐   rpcinfo
+      ☐   Enum4Linux
+      ☐   OS version use apache etc.
+      ☐   SSH client version.
+      ☐   Check all ports vuln scan NSE
+      ☐   Searchsploit all services
+      ☐   telnet pop3 / mail server HELO, VRFY, HELP, USER, PASSWORD
+      ☐   port knocking
+      ☐   FTP
+      ☐   RPCCLIENT
+    	
+    Anything Else
+      ☐   nmap scripts (locate *nse* | grep servicename)
+      ☐   hydra
+      ☐   crunch #scrape the site create targeted wordlist not just rockyou.
+      ☐   MSF Aux Modules #LAST RESORT
+      ☐   Download the software / view git source code, look for database/include/input/data passing functions for web apps or BoF oppertunities for other apps
+      ☐   Known passwords.
+      ☐   Known hashes, pass the hash.
+
+
+Exploitation
+   ☐   Gather Version Numbers for all services.
+   ☐   Searchsploit all services.
+   ☐   Default Creds
+   ☐   Creds Previously Gathered
+   ☐   Download the software
+   ☐   Vuln check NSE scripts for low hanging fruit.
+   ☐   Gather exploits non MSF scripts. 
+
+Post Exploitation
+
+WHAT IS NORMAL??? WHAT ISN'T??? SERVER/MACHINE FUNCTION???
+
+    Linux
+      ☐   linux-local-enum.sh
+      ☐   linuxprivchecker.py
+      ☐   linux-exploit-suggestor.sh
+      ☐   unix-privesc-check.py
+      ☐   file permissions
+      ☐   suid's
+      ☐   cron
+      ☐   binary paths
+      ☐   installed packages + versions
+      ☐   running processes as root or another user
+      ☐   pspy
+      ☐   logs
+      ☐   log / directory managment software
+      ☐   config files
+      ☐   internal ports vs external nmap results
+      ☐   kernal version
+      ☐   bespoke scripts / binaries
+     
+
+    Windows
+      ☐   systeminfo
+      ☐   powershell ? Powershell version.
+      ☐   wpc.exe
+      ☐   windows-exploit-suggestor.py
+      ☐   windows_privesc_check.py
+      ☐   windows-privesc-check2.exe
+      ☐   powerup.ps1
+      ☐   accesschk.exe -uwcqv "Authenticated Users" *
+      ☐   sc qc # service queries
+      ☐   Program Files
+      ☐   Ports internal vs nmap results
+      ☐   Software versions
+      ☐   Registry keys
+      ☐   Running Processes
+      ☐   Current Users
+      ☐   whoami /groups
+      ☐   config files
+      ☐   net users
+      ☐   unquoted paths
+      ☐   Firewall rules
+     
+	
+     
+Priv Escalation
+
+WHATS RUNNING??? WHOS RUNNING IT??? 
+WHAT DO YOU HAVE??? WHAT CAN YOU DO??? WHAT DO YOU NEED???
+
+   ☐  acesss internal services (portfwd)
+   ☐  add account
+   ☐  secure file permissions /passwd /shadow
+   ☐  ssh keys / hash's
+   ☐  write new user to /shadow
+   ☐  guess passwords
+   ☐  known users
+
+
+Windows
+   
+   ☐  Kernel / system exploits.
+   ☐  runas / psexec
+   ☐  dll hijacking
+   ☐  quoted path
+   ☐  service hijacking
+   ☐  pass the hash / psexec
+   ☐  portfwd + exploit
+   ☐  LOLBAS project
+   ☐  Seclists precompiled exploits
+   ☐  Python > .exe exploits.
+   ☐  Hyperion
+   ☐  BOF
+   ☐ ....upgrade to metasploit
+
+Linux
+   ☐  sudo su
+   ☐  sudo -l 
+   ☐  suid #strings
+   ☐  globbing attacks
+   ☐  no full paths
+   ☐  custom scripts/cronjobs.
+   ☐  KernelDB
+   ☐  Searchsploit
+   ☐  Kernel Exploit
+   ☐  GTFObins
+   ☐ ....upgrade to metasploit
+
+Final
+   ☐  Screenshot of IPConfig\WhoamI
+   ☐  Copy proof.txt
+   ☐  Dump hashes 
+   ☐  Dump SSH Keys
+   ☐  Delete files
